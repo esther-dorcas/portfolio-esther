@@ -1,0 +1,9 @@
+{
+  "name": "esthermensah",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { GraduationCap, Calendar, MapPin } from 'lucide-react';
+import { GraduationCap, Calendar } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export function Education() {

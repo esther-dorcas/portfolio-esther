@@ -1,4 +1,4 @@
-import React from 'react';
+// Icons module
 
 export const Github = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
   <svg 
