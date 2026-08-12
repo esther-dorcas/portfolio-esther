@@ -1,56 +1,93 @@
 import { motion } from 'motion/react';
-import { ExternalLink, Monitor, Server, Database } from 'lucide-react';
-import { Github } from './icons';
+import { ArrowUpRight, Sparkles } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export function Projects() {
   const { language } = useLanguage();
+
   const projects = [
     {
-      title: language === 'fr' ? "Plateforme de Prise de Rendez-vous Hospitaliers" : "Medical Appointment Platform",
-      category: "Fullstack Web",
+      num: "01",
+      title: language === 'fr' 
+        ? "Plateforme de Géolocalisation & Prise de RDV Médicaux" 
+        : "Geolocation & Medical Appointment Platform",
+      category: language === 'fr' 
+        ? "Fullstack Web, Géolocalisation & BDD" 
+        : "Fullstack Web, Geolocation & Database",
       description: language === 'fr' 
-        ? "Application web permettant aux patients de prendre rendez-vous en ligne avec des médecins, intégrant une gestion des disponibilités."
-        : "Web application allowing patients to book appointments online with doctors, including availability management.",
-      technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-      icon: <Monitor size={24} className="text-cyan-400" />
+        ? "Application web permettant aux patients de localiser des cabinets médicaux et de prendre rendez-vous en ligne avec des médecins, intégrant une gestion des disponibilités."
+        : "Web application allowing patients to locate medical practices and book appointments online with doctors, including availability management.",
+      technologies: ["PHP", "MySQL", "HTML5", "CSS3", "JavaScript", "Leaflet API"],
+      image: "/medical_booking.png"
     },
     {
+      num: "02",
       title: language === 'fr' ? "Site Web d'Entreprise" : "Corporate Website",
-      category: "Frontend & Backend",
+      category: language === 'fr' ? "Frontend & Backend" : "Frontend & Backend",
       description: language === 'fr'
-        ? "Conception et développement d'un site vitrine dynamique pour présenter les services et activités d'une entreprise."
-        : "Design and development of a dynamic showcase website to present the services and activities of a company.",
-      technologies: ["HTML", "CSS", "JavaScript", "PHP"],
-      icon: <Server size={24} className="text-cyan-400" />
+        ? "Conception et développement d'un site vitrine dynamique et responsive pour présenter les services et activités d'une entreprise technologique."
+        : "Design and development of a dynamic and responsive showcase website to present the services and activities of a tech company.",
+      technologies: ["HTML5", "CSS3", "JavaScript", "PHP", "Responsive Design"],
+      image: "/corporate_web.png"
     },
     {
-      title: language === 'fr' ? "Applications Académiques (Réseaux & BDD)" : "Academic Applications",
-      category: "Software & Telecom",
+      num: "03",
+      title: language === 'fr' ? "Applications Académiques (Réseaux & BDD)" : "Academic Applications (Networks & Databases)",
+      category: language === 'fr' ? "Logiciel & Télécoms" : "Software & Telecoms",
       description: language === 'fr'
-        ? "Série de projets d'étude couvrant la programmation logicielle, l'administration de bases de données, les réseaux et télécoms."
-        : "Series of study projects covering software programming, database administration, networks, and telecoms.",
-      technologies: ["Java", "C", "MySQL", "Linux"],
-      icon: <Database size={24} className="text-cyan-400" />
+        ? "Série de projets d'étude couvrant la programmation logicielle, l'administration de bases de données, la configuration réseau et les télécoms."
+        : "Series of study projects covering software programming, database administration, network configuration, and telecoms.",
+      technologies: ["Java", "C Lang", "MySQL", "Linux", "Packet Tracer"],
+      image: "/academic_telecom.png"
+    },
+    {
+      num: "04",
+      title: language === 'fr' ? "Application de Gestion de Cuniculture" : "Rabbit Farming (Cuniculture) Management App",
+      category: language === 'fr' ? "IoT, Frontend & Gestion" : "IoT, Frontend & Management",
+      description: language === 'fr'
+        ? "Application de gestion pour un élevage de lapins, intégrant le suivi des populations, l'alimentation, et des indicateurs de capteurs d'environnement."
+        : "Management application for a rabbit farm, integrating population tracking, feeding schedules, and environmental sensor indicators.",
+      technologies: ["React", "HTML5", "CSS3", "JavaScript", "IoT Sensors"],
+      image: "/cuniculture_app.png"
     }
   ];
 
   return (
-    <section id="projects" className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-24 bg-portfolio-dark relative border-t border-indigo-500/5">
+      {/* Background decoration grid and glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_30%,rgba(99,102,241,0.03)_0%,transparent_60%)] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_70%,rgba(139,92,246,0.03)_0%,transparent_60%)] pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Section Header */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            {language === 'fr' ? "Mes Projets" : "My Projects"}
+          <span className="inline-flex items-center gap-2 text-portfolio-purple font-semibold tracking-widest uppercase text-xs bg-indigo-500/8 px-4 py-1.5 rounded-full border border-indigo-500/20 mb-5">
+            <Sparkles size={12} />
+            {language === 'fr' ? "PROJETS RÉCENTS" : "FEATURED PROJECTS"}
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
+            {language === 'fr' ? "Quelques Projets Réalisés" : "Some of My Recent Work"}
           </h2>
-          <div className="w-20 h-1 bg-cyan-500 mx-auto rounded-full"></div>
+          <p className="text-slate-400 max-w-lg mx-auto text-base font-light leading-relaxed">
+            {language === 'fr'
+              ? "Découvrez mes réalisations alliant développement logiciel, solutions web et technologies réseaux."
+              : "Discover my projects combining software development, web solutions, and network technologies."}
+          </p>
+          <div className="flex items-center justify-center gap-3 mt-7">
+            <div className="h-px w-16 bg-gradient-to-r from-transparent to-portfolio-purple"></div>
+            <div className="w-2 h-2 rounded-full bg-portfolio-purple animate-pulse"></div>
+            <div className="h-px w-16 bg-gradient-to-l from-transparent to-portfolio-violet"></div>
+          </div>
         </motion.div>
 
+        {/* Projects Grid */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -59,63 +96,70 @@ export function Projects() {
             hidden: { opacity: 0 },
             visible: {
               opacity: 1,
-              transition: {
-                staggerChildren: 0.2
-              }
+              transition: { staggerChildren: 0.15 }
             }
           }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10"
         >
           {projects.map((project, idx) => (
             <motion.div 
               key={idx}
               variants={{
-                hidden: { opacity: 0, scale: 0.8, y: 50, rotateX: -15 },
+                hidden: { opacity: 0, y: 40 },
                 visible: { 
                   opacity: 1, 
-                  scale: 1, 
                   y: 0, 
-                  rotateX: 0,
-                  transition: { type: "spring", stiffness: 200, damping: 20 }
+                  transition: { type: "spring", stiffness: 120, damping: 18 }
                 }
               }}
-              whileHover={{ y: -10, transition: { type: "spring", stiffness: 300, damping: 15 } }}
-              className="bg-slate-800/40 border border-slate-700/50 rounded-2xl overflow-hidden group hover:border-cyan-500/50 transition-all shadow-lg hover:shadow-[0_20px_40px_rgba(6,182,212,0.15)] flex flex-col"
+              whileHover={{ y: -8 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="bg-portfolio-card/45 border border-indigo-500/5 hover:border-indigo-500/25 rounded-3xl overflow-hidden group flex flex-col shadow-xl hover:shadow-[0_20px_40px_rgba(99,102,241,0.12)] transition-all duration-400"
             >
-              {/* Project Preview Placeholder */}
-              <div className="h-48 bg-slate-900/80 relative overflow-hidden flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 to-slate-900 z-0"></div>
-                <div className="z-10 p-4 bg-slate-800/80 rounded-full border border-slate-700 group-hover:scale-110 transition-transform duration-500">
-                  {project.icon}
-                </div>
+              {/* Project Preview Image */}
+              <div className="h-64 bg-slate-950 relative overflow-hidden group">
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover transform group-hover:scale-108 transition-transform duration-500 select-none"
+                  draggable={false}
+                />
                 
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-slate-900/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-20">
-                  <a href="#" className="p-3 bg-cyan-600 hover:bg-cyan-500 text-white rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                    <ExternalLink size={20} />
-                  </a>
-                  <a href="#" className="p-3 bg-slate-700 hover:bg-slate-600 text-white rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-75">
-                    <Github size={20} />
+                {/* Number index */}
+                <div className="absolute top-4 left-4 text-xs font-bold text-white bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/10 font-mono z-10">
+                  {project.num}
+                </div>
+
+                {/* Hover overlay link */}
+                <div className="absolute inset-0 bg-portfolio-dark/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
+                  <a 
+                    href="#contact" 
+                    className="p-3 bg-portfolio-purple hover:bg-portfolio-violet text-white rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-md cursor-pointer"
+                  >
+                    <ArrowUpRight size={22} />
                   </a>
                 </div>
               </div>
 
-              <div className="p-6 flex-1 flex flex-col">
-                <div className="text-xs font-semibold text-cyan-400 mb-2 tracking-wider uppercase">
-                  {project.category}
+              {/* Project Content */}
+              <div className="p-8 flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="text-xs font-semibold text-portfolio-purple mb-2.5 tracking-widest uppercase">
+                    {project.category}
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-portfolio-purple transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  <p className="text-slate-400 text-sm font-light leading-relaxed mb-6">
+                    {project.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-slate-400 text-sm mb-6 flex-1">
-                  {project.description}
-                </p>
                 
-                <div className="flex flex-wrap gap-2 mt-auto">
+                <div className="flex flex-wrap gap-2 pt-5 border-t border-slate-900/60">
                   {project.technologies.map((tech, tIdx) => (
                     <span 
                       key={tIdx} 
-                      className="text-xs font-medium bg-slate-900 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700/50"
+                      className="text-[10px] font-semibold bg-slate-950/60 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-900/80 hover:border-indigo-500/20 transition-colors"
                     >
                       {tech}
                     </span>

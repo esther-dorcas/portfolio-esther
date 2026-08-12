@@ -30,19 +30,25 @@ export function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-slate-900/50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="py-24 bg-portfolio-dark/95 relative border-t border-indigo-500/5">
+      {/* Background decoration */}
+      <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-portfolio-violet/5 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <span className="text-portfolio-purple font-semibold tracking-widest uppercase text-xs inline-block bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20 mb-3">
+            {language === 'fr' ? "EXPÉRIENCES" : "EXPERIENCE"}
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
             {language === 'fr' ? "Expériences Professionnelles" : "Professional Experience"}
           </h2>
-          <div className="w-20 h-1 bg-cyan-500 mx-auto rounded-full"></div>
+          <div className="w-16 h-1 bg-gradient-to-r from-portfolio-purple to-portfolio-violet mx-auto rounded-full mt-4"></div>
         </motion.div>
 
         <motion.div 
@@ -62,48 +68,47 @@ export function Experience() {
             <motion.div 
               key={idx}
               variants={{
-                hidden: { opacity: 0, scale: 0.9, y: 30, rotateZ: idx % 2 === 0 ? -2 : 2 },
+                hidden: { opacity: 0, scale: 0.95, y: 30 },
                 visible: { 
                   opacity: 1, 
                   scale: 1, 
                   y: 0,
-                  rotateZ: 0,
                   transition: { type: "spring", stiffness: 200, damping: 20 }
                 }
               }}
-              whileHover={{ scale: 1.03, rotateZ: 0, y: -5, transition: { type: "spring", stiffness: 300, damping: 15 } }}
-              className="bg-slate-800/40 border border-slate-700/50 hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all p-8 rounded-2xl group"
+              whileHover={{ scale: 1.01, y: -5, transition: { duration: 0.3 } }}
+              className="bg-portfolio-card/40 border border-indigo-500/5 hover:border-indigo-500/20 hover:bg-portfolio-card-hover/90 transition-all duration-300 p-8 rounded-2xl group shadow-lg hover:shadow-[0_15px_35px_rgba(99,102,241,0.1)]"
             >
-              <div className="flex justify-between items-start mb-4">
+              <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-5">
                 <div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                  <h3 className="text-xl font-bold text-white group-hover:text-portfolio-purple transition-colors">
                     {exp.title}
                   </h3>
-                  <p className="text-slate-300 font-medium text-lg mt-1 flex items-center gap-2">
-                    <Briefcase size={16} className="text-cyan-500" />
+                  <p className="text-slate-300 font-semibold text-base mt-2 flex items-center gap-2">
+                    <Briefcase size={16} className="text-portfolio-violet" />
                     {exp.company}
                   </p>
                 </div>
-                <span className="bg-slate-900/80 border border-slate-700 text-cyan-400 text-sm font-semibold px-3 py-1 rounded-full whitespace-nowrap">
+                <span className="bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-bold px-3 py-1.5 rounded-full whitespace-nowrap tracking-wide">
                   {exp.period}
                 </span>
               </div>
               
-              <p className="text-slate-400 mb-6 leading-relaxed">
+              <p className="text-slate-400 text-sm font-light leading-relaxed mb-6">
                 {exp.description}
               </p>
               
-              <div>
-                <h4 className="text-sm font-semibold text-slate-300 mb-3 uppercase tracking-wider">
+              <div className="pt-4 border-t border-slate-900">
+                <h4 className="text-xs font-semibold text-slate-500 mb-3 uppercase tracking-wider">
                   {language === 'fr' ? "Compétences acquises :" : "Skills acquired:"}
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {exp.skills.map((skill, sIdx) => (
                     <span 
                       key={sIdx} 
-                      className="flex items-center gap-1.5 text-sm bg-slate-900/50 text-slate-300 border border-slate-700/50 px-3 py-1.5 rounded-lg"
+                      className="flex items-center gap-1.5 text-xs bg-slate-950/40 text-slate-300 border border-slate-900 px-3 py-1.5 rounded-xl group-hover:border-indigo-500/10 transition-colors"
                     >
-                      <CheckCircle2 size={14} className="text-cyan-500" />
+                      <CheckCircle2 size={13} className="text-portfolio-violet" />
                       {skill}
                     </span>
                   ))}

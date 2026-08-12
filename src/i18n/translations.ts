@@ -87,6 +87,13 @@ export const translations = {
         tools: "Outils & DevOps"
       }
     },
+    interests: {
+      title: "Centres d'Intérêt",
+      digital: "Technologies numériques",
+      reading: "Lecture",
+      music: "Musique",
+      tennis: "Tennis"
+    },
     contact: {
       title: "Contactez-moi",
       subtitle: "Parlons de votre projet",
@@ -188,6 +195,13 @@ export const translations = {
         telecom: "Networks & Telecoms",
         tools: "Tools & DevOps"
       }
+    },
+    interests: {
+      title: "Interests",
+      digital: "Digital Technologies",
+      reading: "Reading",
+      music: "Music",
+      tennis: "Tennis"
     },
     contact: {
       title: "Contact Me",
